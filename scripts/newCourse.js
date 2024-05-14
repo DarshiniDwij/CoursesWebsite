@@ -16,6 +16,13 @@ async function getUsers(){
        cell2.innerHTML = responseData[i].courseNum;
        cell3.innerHTML = responseData[i].courseName;
 
+       const detailsCell = row.insertCell();
+        let anchor = document.createElement("a");
+        anchor.href =  'details.html?cid='+responseData[i].id;
+        anchor.text = "See details";  
+        detailsCell.appendChild(anchor);
+
+
     }
    
 }
