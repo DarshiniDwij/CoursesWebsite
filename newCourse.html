@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <head>
-    <title>CoursesWebsite</title>
+    <title>New User</title>
     <script src="/scripts/newCourse.js" defer></script>
+    <!-- <script src="/scripts/getCourse.js" defer></script> -->
 </head>
 <body>
-    <table id="courseTable">
-        <tr>
-            <th>Department</th>
-            <th>Course Number</th>
-            <th>Course Name</th>
-        </tr>
-    </table>
-    <button type="submit" value="submit" onclick="getUsers()">submit</button>
+    <form>
+        <label for="dept">Department:</label><br>
+        <input type="text" id="dept" name="dept"><br>
+
+        <label for="courseNum">courseNum:</label><br>
+        <input type="text" id="courseNum" name="courseNum"><br>
+
+        <label for="courseName">courseName:</label><br>
+        <input type="text" id="courseName" name="courseName"><br>
+
+        <label for="instructor">Instructor:</label><br>
+        <input type="text" id="instructor" name="instructor"><br>
+
+        <label for="startDate">StartDate:</label><br>
+        <input type="text" id="startDate" name="startDate"><br>
+
+        <label for="numDays">No_Of_Days:</label><br>
+        <input type="text" id="numDays" name="numDays"><br>
+
+        <!-- <input type="submit" value="Submit" onclick="addNewUser()"> -->
+        <button type="submit" onclick="addNewUser()">AddUser</button>
+        <!-- <input type="submit" value="submit" onclick="getUsers()" placeholder="getUsers"> -->
+        
+    </form>
+
+    <p id="confirmationMessage"></p>
 </body>

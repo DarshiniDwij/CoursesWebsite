@@ -1,28 +1,38 @@
+// Create JSON object to include in the request body
 
-async function getUsers(){
-    let table = document.getElementById("courseTable");
-
-    const response =  await fetch("http://localhost:8081/api/courses")
-    const responseData = await response.json()
-
-    for(let i=0; i<responseData.length; i++){
-
-       let row = table.insertRow(-1);
-       let cell1 = row.insertCell(0);
-       let cell2 = row.insertCell(1);
-       let cell3 = row.insertCell(2);
-
-       cell1.innerHTML = responseData[i].dept;
-       cell2.innerHTML = responseData[i].courseNum;
-       cell3.innerHTML = responseData[i].courseName;
-
-       const detailsCell = row.insertCell();
-        let anchor = document.createElement("a");
-        anchor.href =  'details.html?cid='+responseData[i].id;
-        anchor.text = "See details";  
-        detailsCell.appendChild(anchor);
-
-
+function addNewUser(){
+    let bodyData = {
+        id : " ",
+        dept : document.getElementById("dept").value,
+        courseNum : document.getElementById("courseNum").value,
+        courseName : document.getElementById("courseName").value,
+        instructor : document.getElementById("instructor").value,
+        startDate : document.getElementById("startDate").value,
+        numDays : document.getElementById("numDays").value
     }
-   
+    
+    // Send the request
+    
+    fetch("http://localhost:8081/api/courses", { 
+        method: "POST",
+        body: JSON.stringify(bodyData),
+        headers: {"Content-type": 
+                  "application/json; charset=UTF-8"}
+    
+    })
+    .then(response => response.json())
+    .then(json => {
+        let message = "Course" + json.id + "added successfully";
+        console.log("record added")
+        let confirmationMessage = document.getElementById(confirmationMessage);
+        confirmationMessage.innerHTML = message;
+    
+    
+    })
+    .catch(err => {
+        // If the POST returns an error, display a message
+        let message = 
+           document.getElementById(confirmationMessage);
+           message.innerHTML = "Unexpected error";
+    });
 }
