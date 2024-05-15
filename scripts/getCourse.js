@@ -22,6 +22,13 @@ async function getUsers(){
         anchor.text = "See details";  
         detailsCell.appendChild(anchor);
 
+        const deleteCell = row.insertCell();
+        let dAnchor = document.createElement("a");
+        dAnchor.href = 'deleteCourse.html?cid='+responseData[i].id;
+        dAnchor.text = "Delete Course";
+        deleteCell.appendChild(dAnchor);
+
+
 
     }
    
